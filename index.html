@@ -117,6 +117,10 @@
     .project ul { margin: 12px 0; padding-left: 22px; }
     .project li + li { margin-top: 6px; }
     .contribution { color: var(--muted); font-size: 15px; }
+    .project .result-line { margin: 17px 0; padding: 13px 17px; border-left: 2px solid var(--link); background: var(--avatar); font-size: 16px; }
+    .project-facts { margin: 0; }
+    .project-facts dt { margin-bottom: 5px; font-weight: 600; font-size: 15px; }
+    .project-facts dd { margin: 0 0 18px; font-size: 15px; }
     details { margin-top: 19px; }
     summary { color: var(--link); font-size: 15px; cursor: pointer; width: fit-content; text-underline-offset: 4px; }
     summary:hover { text-decoration: underline; }
@@ -189,11 +193,73 @@
       <h2 id="about-title">关于我</h2>
       <p>我目前就读于北京大学数学科学学院，是一名本科生。</p>
       <p class="english-bio" lang="en">I am an undergraduate student at the School of Mathematical Sciences, Peking University.</p>
-      <p class="practice-note">目前通过项目实践学习机器学习与算法，关注实验对照、结果分析，以及模型和策略的改进过程。</p>
+      <p class="practice-note">围绕游戏智能体、比赛数据分析与模仿学习开展项目实践，关注数据口径、对照实验与模型效果的可靠评估。</p>
     </section>
     <section class="page-section" id="projects" aria-labelledby="projects-title">
       <h2 id="projects-title">项目与实践</h2>
-      <p class="section-intro">记录做过的实验、得到的认识，以及我在项目中的实际参与。</p>
+      <p class="section-intro">智能体决策、数据分析与模仿学习的项目记录。开发与分析过程中使用 AI 辅助工具。</p>
+      <article class="project" aria-labelledby="imitation-title">
+        <p class="project-meta">机器学习 · PyTorch / 可观察状态 / 比赛级数据划分</p>
+        <h3 id="imitation-title">基于公开回放的模仿学习原型</h3>
+        <p>探索能否仅凭对局中可观察的信息学习强队行动，同时避免训练集与验证集泄漏。</p>
+        <p class="result-line">离线验证：第二版特征下，完整动作 Top-1 准确率为 <strong>68.95%</strong>，同一候选集上的线性基线为 <strong>47.34%</strong>。验证集候选动作覆盖 <strong>35,177 / 35,181</strong> 次决策。</p>
+        <details>
+          <summary>查看方法、个人贡献与评估边界</summary>
+          <div class="experiment-detail">
+            <dl class="project-facts">
+              <dt>方法</dt>
+              <dd>选取 Sponge 队伍的 Default Small 回放，按独立比赛冻结 115 / 25 / 25 场训练、验证和封存测试集；重建每条龙行动时可见的状态，以与 C++ 推理端一致的候选动作生成器构造数据，用 PyTorch 训练带记忆的候选动作评分模型。训练数据排除了 STAR 队伍。</dd>
+              <dt>个人贡献</dt>
+              <dd>负责数据来源与版本锁定、比赛级划分、可观察特征和候选动作设计，并建立模型与线性基线的离线评估流程。</dd>
+              <dt>认识与局限</dt>
+              <dd>离线动作预测准确率不等于实战胜率。历史裁判规则版本仍未完全核实，封存测试集未用于模型选择；该模型属于研究原型，尚不能作为已验证的线上 bot 成绩。</dd>
+            </dl>
+          </div>
+        </details>
+      </article>
+      <article class="project" aria-labelledby="qu-title">
+        <p class="project-meta">智能体与算法 · C++20 / WebAssembly 裁判 · 2026.09 版本</p>
+        <h3 id="qu-title">UNSW Battlecode 智能体 qu</h3>
+        <p>在多种地图和对手策略下，设计能稳定存活、获取资源，并尽可能保住终局最长龙的对战 bot。</p>
+        <p class="result-line">2026 年 9 月的一版 qu，在当时 10 张线上地图上与内部基线 R2 进行 100 场换边沙箱对战，取得 <strong>81 胜、12 负、7 平</strong>。</p>
+        <p class="contribution">另一次 Big Empty 练习图自对弈打满 500 轮，最长龙达到 143 节。上述结果分别来自内部基线对战与练习图自对弈。</p>
+        <details>
+          <summary>查看方法、个人贡献与评估边界</summary>
+          <div class="experiment-detail">
+            <dl class="project-facts">
+              <dt>方法</dt>
+              <dd>基于 C++20 和官方 WebAssembly 裁判，将地图与身体记忆、声纳通信、导航、资源获取、分裂、战斗等模块整合为加权行动决策；执行前使用身体运动模拟与安全检查过滤高风险动作。</dd>
+              <dt>个人贡献</dt>
+              <dd>负责整合行动模块、设计评分权重与安全门槛，通过固定种子、交换先后位置的对战实验分析地图差异，并依据回放迭代分裂与碰撞决策。</dd>
+              <dt>认识与局限</dt>
+              <dd>多模块评分能兼顾资源收益与即时生存，但权重仍以工程经验为主。面对更强的 Default Small V2.4，对同一组种子的改进版本仅取得 1 / 10 胜，说明局部策略改进尚不能保证跨对手表现。对局回放可在本地对战台逐轮查看。</dd>
+            </dl>
+          </div>
+        </details>
+      </article>
+      <article class="project" aria-labelledby="replay-title">
+        <p class="project-meta">数据分析与工具 · Python / Parquet / 交互式可视化</p>
+        <h3 id="replay-title">比赛回放分析与可视化工具链</h3>
+        <p>针对公开对局数量多、地图差异明显的问题，从回放中分析资源、分裂和存活策略，辅助 bot 的测试与评估。</p>
+        <p class="result-line">将 <strong>148 份</strong>原始回放去重为 <strong>144 场</strong>独立对局。在该研究样本中，75 场打满 500 轮，其中 <strong>74 场</strong>由最长龙直接决定胜负。</p>
+        <details>
+          <summary>查看方法、个人贡献与统计范围</summary>
+          <div class="experiment-detail">
+            <dl class="project-facts">
+              <dt>方法与工具</dt>
+              <dd>建立比赛数据采集、回放解析、哈希去重与 Parquet 索引流程，按地图统计开局分裂、声纳、拾珠、存活龙和终局长度；开发交互式地图图鉴与可逐轮播放的本地对战台。地图图鉴覆盖当时启用的 10 张线上地图，支持查看资源生成范围与传送门配对。</dd>
+              <dt>个人贡献</dt>
+              <dd>负责确定采样和去重口径、实现统计与可视化流程，并将回放观察转化为 bot 的测试方向与评估指标。</dd>
+              <dt>认识与局限</dt>
+              <dd>资源领先需要转化为存活的龙身长度，才能提高终局得分。公开回放无法展示对手的内部记忆和决策原因，且研究样本偏重当时的强队，统计结果不能直接外推为全赛季规律。</dd>
+            </dl>
+          </div>
+        </details>
+      </article>
+    </section>
+    <section class="page-section" id="learning" aria-labelledby="learning-title">
+      <h2 id="learning-title">基础学习实验</h2>
+      <p class="section-intro">通过小规模、可对照的实验理解神经网络的训练过程。</p>
       <article class="project" aria-labelledby="micrograd-title">
         <p class="project-meta">学习实验 · 2026.10 · Python / NumPy / micrograd</p>
         <h3 id="micrograd-title">micrograd：神经网络训练对照实验</h3>
@@ -233,16 +299,6 @@
             </div>
           </div>
         </details>
-      </article>
-      <article class="project" aria-labelledby="battlecode-title">
-        <p class="project-meta">算法实践 · 持续探索 · C++ / Python</p>
-        <h3 id="battlecode-title">Battlecode：机器人决策与对战评估</h3>
-        <p>在 UNSW Battlecode 2026 环境中，围绕机器人策略、地图分析与本地对战开展实践，探索规则约束下的决策过程。</p>
-        <ul>
-          <li>关注目标选择、导航、动作取舍与计算预算等问题。</li>
-          <li>结合比赛规则和对局回放观察策略行为，通过本地对战与可视化工具辅助分析。</li>
-        </ul>
-        <p class="contribution">我的参与：讨论策略方案、选择改进方向并判断对战结果，借助 AI 辅助开发与分析。项目仍在迭代，目前以过程与方法为展示重点。</p>
       </article>
     </section>
     <section class="page-section" id="contact" aria-labelledby="contact-title">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="吴昊天的个人主页，北京大学数学科学学院本科生。">
+  <meta name="description" content="吴昊天，北京大学数学科学学院本科生，关注机器学习、算法与数据相关实习。这里记录我的项目实践与实验分析。">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <title>吴昊天 | Haotian Wu</title>
@@ -78,14 +78,14 @@
       gap: 24px;
     }
     .brand { color: var(--foreground); font-size: 21px; font-weight: 650; text-decoration: none; letter-spacing: .04em; }
-    .navigation { display: flex; align-items: center; gap: 26px; font-size: 15px; }
+    .navigation { display: flex; align-items: center; gap: 22px; font-size: 15px; }
     .navigation a { color: var(--foreground); text-decoration: none; }
     .navigation a:hover { text-decoration: underline; }
     .theme-toggle { width: 36px; height: 36px; padding: 6px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--foreground); cursor: pointer; }
     .theme-toggle:hover { background: var(--avatar); }
     .theme-toggle svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
     .theme-toggle[hidden] { display: none; }
-    main { width: min(100% - 64px, 790px); margin: 0 auto; flex: 1; padding: 80px 0 112px; }
+    main { width: min(100% - 64px, 790px); margin: 0 auto; flex: 1; padding: 70px 0 86px; }
     .profile { display: flex; align-items: center; gap: 26px; }
     .avatar {
       width: 92px;
@@ -102,14 +102,45 @@
     h1 { margin: 0; font-size: 34px; line-height: 1.35; font-weight: 650; letter-spacing: .04em; }
     .english-name { margin: 4px 0 9px; color: var(--muted); font-size: 17px; letter-spacing: .025em; }
     .profile-link { font-size: 15px; }
+    .intent { margin: 10px 0 0; color: var(--link); font-size: 15px; }
     .about { margin-top: 68px; padding-top: 30px; border-top: 1px solid var(--line); scroll-margin-top: 30px; }
     h2 { margin: 0 0 19px; font-size: 22px; font-weight: 600; }
     .about p { margin: 0; }
     .about .english-bio { margin-top: 14px; font-size: 16px; color: var(--muted); line-height: 1.8; }
+    .about .practice-note { margin-top: 14px; }
+    .page-section { margin-top: 44px; padding-top: 29px; border-top: 1px solid var(--line); scroll-margin-top: 26px; }
+    .section-intro { margin: -6px 0 25px; color: var(--muted); font-size: 15px; }
+    .project + .project { margin-top: 34px; padding-top: 30px; border-top: 1px solid var(--line); }
+    .project-meta { margin: 0 0 7px; color: var(--muted); font-size: 13px; letter-spacing: .025em; }
+    h3 { margin: 0 0 11px; font-size: 20px; line-height: 1.5; font-weight: 600; }
+    .project p { margin: 0 0 12px; }
+    .project ul { margin: 12px 0; padding-left: 22px; }
+    .project li + li { margin-top: 6px; }
+    .contribution { color: var(--muted); font-size: 15px; }
+    details { margin-top: 19px; }
+    summary { color: var(--link); font-size: 15px; cursor: pointer; width: fit-content; text-underline-offset: 4px; }
+    summary:hover { text-decoration: underline; }
+    summary:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
+    .experiment-detail { padding-top: 19px; }
+    .experiment-detail p { font-size: 15px; }
+    .results-table-wrap { overflow-x: auto; margin: 19px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    caption { text-align: left; margin-bottom: 8px; color: var(--muted); font-size: 13px; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+    th { font-weight: 600; }
+    th:first-child, td:first-child { padding-left: 0; }
+    .numeric { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    figure { margin: 22px 0 15px; }
+    figure img { display: block; width: 100%; height: auto; border-radius: 4px; background: #fff; }
+    figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .project-links, .contact-links { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 23px; font-size: 15px; }
+    .scope-note { color: var(--muted); font-size: 14px; }
+    .contact-text { margin: 0 0 16px; }
     footer { width: min(100% - 64px, 790px); margin: 0 auto; padding: 22px 0 27px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
     @media (max-width: 520px) {
       .header-inner { padding: 0 22px; min-height: 60px; gap: 15px; }
-      .navigation { gap: 17px; font-size: 14px; }
+      .navigation { gap: 13px; font-size: 13px; }
+      .theme-toggle { width: 30px; height: 36px; }
       .brand { font-size: 19px; }
       main { width: calc(100% - 44px); padding: 56px 0 86px; }
       .profile { gap: 20px; }
@@ -118,6 +149,12 @@
       .english-name { font-size: 15px; }
       .about { margin-top: 48px; padding-top: 26px; }
       h2 { font-size: 20px; }
+      h3 { font-size: 18px; }
+      .intent { font-size: 14px; }
+      .page-section { margin-top: 36px; padding-top: 25px; }
+      .project p, .project li, .contact-text { font-size: 16px; }
+      table { font-size: 13px; }
+      th, td { padding-right: 8px; padding-left: 8px; }
       footer { width: calc(100% - 44px); }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -129,7 +166,8 @@
     <div class="header-inner">
       <a class="brand" href="./" aria-label="吴昊天的主页">吴昊天</a>
       <nav class="navigation" aria-label="主导航">
-        <a href="#about">关于</a>
+        <a href="#projects">项目</a>
+        <a href="#contact">联系</a>
         <a href="https://github.com/hajimi-wu">GitHub</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换颜色模式" aria-pressed="false" hidden>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 13.1A8.6 8.6 0 0 1 10.9 3.6 8.6 8.6 0 1 0 20.4 13.1Z"/></svg>
@@ -144,12 +182,76 @@
         <h1 id="name">吴昊天</h1>
         <p class="english-name" lang="en">Haotian Wu</p>
         <a class="profile-link" href="https://github.com/hajimi-wu">GitHub · hajimi-wu</a>
+        <p class="intent">求职方向：机器学习 / 算法 / 数据相关实习</p>
       </div>
     </section>
     <section class="about" id="about" aria-labelledby="about-title">
       <h2 id="about-title">关于我</h2>
       <p>我目前就读于北京大学数学科学学院，是一名本科生。</p>
       <p class="english-bio" lang="en">I am an undergraduate student at the School of Mathematical Sciences, Peking University.</p>
+      <p class="practice-note">目前通过项目实践学习机器学习与算法，关注实验对照、结果分析，以及模型和策略的改进过程。</p>
+    </section>
+    <section class="page-section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">项目与实践</h2>
+      <p class="section-intro">记录做过的实验、得到的认识，以及我在项目中的实际参与。</p>
+      <article class="project" aria-labelledby="micrograd-title">
+        <p class="project-meta">学习实验 · 2026.10 · Python / NumPy / micrograd</p>
+        <h3 id="micrograd-title">micrograd：神经网络训练对照实验</h3>
+        <p>基于 Karpathy 的 micrograd 月牙分类演示，完成 5 轮实验，观察学习率、训练时长与学习率调度对训练过程的影响。</p>
+        <ul>
+          <li>固定模型、数据划分与随机种子，比较损失曲线、错分样本和分类边界。</li>
+          <li>通过学习率缩小、继续训练和先大后小的学习率安排，检验自己的预测。</li>
+          <li>记录支持与未支持原假设的结果：曲线更平稳、损失更低，都不一定意味着错分数更少。</li>
+        </ul>
+        <p class="contribution">我的参与：提出实验问题与预测，选择对照方向，结合图表讨论结果并决定下一步。代码、实验脚本与可视化由 AI 辅助实现。</p>
+        <details>
+          <summary>查看实验设置、结果与图表</summary>
+          <div class="experiment-detail">
+            <p>实验设置：100 个合成月牙样本，固定拆分为 80 个训练样本、20 个验证样本；网络为 2 → 16 → 16 → 1，共 337 个参数，在 CPU 上运行。</p>
+            <div class="results-table-wrap">
+              <table>
+                <caption>5 轮实验最终训练与验证错分数</caption>
+                <thead><tr><th scope="col">实验</th><th scope="col">累计更新</th><th scope="col">训练错分</th><th scope="col">验证错分</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">原始学习率基线</th><td class="numeric">100</td><td class="numeric">0 / 80</td><td class="numeric">0 / 20</td></tr>
+                  <tr><th scope="row">学习率缩小 10 倍</th><td class="numeric">100</td><td class="numeric">5 / 80</td><td class="numeric">0 / 20</td></tr>
+                  <tr><th scope="row">小学习率继续训练</th><td class="numeric">200</td><td class="numeric">5 / 80</td><td class="numeric">0 / 20</td></tr>
+                  <tr><th scope="row">先大后小的学习率</th><td class="numeric">200</td><td class="numeric">5 / 80</td><td class="numeric">0 / 20</td></tr>
+                  <tr><th scope="row">上述学习率整体放大 3 倍</th><td class="numeric">200</td><td class="numeric">5 / 80</td><td class="numeric">0 / 20</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>第 3–5 轮均从第 2 轮第 100 次更新的同一个模型继续训练。第 3 轮使用固定学习率；第 4 轮改为先大后小，并保持与第 3 轮相同的平均学习率；第 5 轮将第 4 轮的学习率整体放大 3 倍。</p>
+            <figure>
+              <a href="./micrograd-comparison.png" aria-label="查看原始基线与小学习率实验对照大图"><img src="./micrograd-comparison.png" alt="原始基线与学习率缩小十倍的分类边界、损失曲线及错分比例对照" width="1920" height="1440" loading="lazy" decoding="async"></a>
+              <figcaption>第 1、2 轮对照：学习率缩小后曲线更平稳，但相同更新次数下仍有 5 个训练样本错分。点击图片可查看大图。</figcaption>
+            </figure>
+            <p class="scope-note">比较范围：同一份小样本数据、同一划分与随机种子。验证集在多轮讨论中被反复查看，未作为独立最终测试集；这些结果用于理解训练现象，不代表大样本或实际业务性能。</p>
+            <div class="project-links">
+              <a href="./micrograd-experiments.csv" download>下载 5 轮实验结果 CSV</a>
+              <a href="https://github.com/karpathy/micrograd">基础框架：Karpathy / micrograd</a>
+            </div>
+          </div>
+        </details>
+      </article>
+      <article class="project" aria-labelledby="battlecode-title">
+        <p class="project-meta">算法实践 · 持续探索 · C++ / Python</p>
+        <h3 id="battlecode-title">Battlecode：机器人决策与对战评估</h3>
+        <p>在 UNSW Battlecode 2026 环境中，围绕机器人策略、地图分析与本地对战开展实践，探索规则约束下的决策过程。</p>
+        <ul>
+          <li>关注目标选择、导航、动作取舍与计算预算等问题。</li>
+          <li>结合比赛规则和对局回放观察策略行为，通过本地对战与可视化工具辅助分析。</li>
+        </ul>
+        <p class="contribution">我的参与：讨论策略方案、选择改进方向并判断对战结果，借助 AI 辅助开发与分析。项目仍在迭代，目前以过程与方法为展示重点。</p>
+      </article>
+    </section>
+    <section class="page-section" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系与链接</h2>
+      <p class="contact-text">欢迎交流机器学习、算法与数据相关的实习机会，以及项目实践中的问题。</p>
+      <div class="contact-links">
+        <a href="https://github.com/hajimi-wu">GitHub 个人页</a>
+        <a href="https://github.com/hajimi-wu/hajimi-wu.github.io">本网站源码</a>
+      </div>
     </section>
   </main>
   <footer>© 2026 吴昊天</footer>
